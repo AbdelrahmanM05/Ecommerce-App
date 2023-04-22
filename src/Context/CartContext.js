@@ -74,7 +74,7 @@ function clearCart() {
 export default function CartContextProvider(props) {
   return (
     <CartContext.Provider
-      value={{ createCart, getCart, updateCart, removeItem }}
+      value={{ createCart, getCart, updateCart, removeItem,clearCart }}
     >
       {props.children}
     </CartContext.Provider>

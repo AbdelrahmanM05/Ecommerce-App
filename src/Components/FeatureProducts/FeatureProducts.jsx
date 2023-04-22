@@ -4,6 +4,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 export default function FeatureProducts() {
   let { createCart } = useContext(CartContext);
@@ -18,7 +19,7 @@ export default function FeatureProducts() {
         className: "border border-success border-2 box-shadow text-center  ",
       });
     } else {
-      toast.success(response.data.message, {
+      toast.error(response.data.message, {
         position: "bottom-right",
         className: "border border-success border-2 box-shadow text-center  ",
       });
@@ -30,6 +31,7 @@ export default function FeatureProducts() {
       `https://route-ecommerce.onrender.com/api/v1/products`
     );
     setAllProducts(data.data);
+    console.log(data.data);
     setMainLoader(false);
   }
 
@@ -47,24 +49,23 @@ export default function FeatureProducts() {
       )}
       <div className="container py-5">
         <div className="row">
-          {allProducts.map((product) => (
+          {/* {allProducts.map((product) => (
             <div className="col-sm-4 col-md-3 col-lg-2" key={product.id}>
-              <div
-                onClick={() => console.log(product.description)}
-                className="product px-2 py-3"
-              >
-                <img src={product.imageCover} className="w-100" alt="" />
-                <p className="text-main">{product.category.name}</p>
-                <h3 className="h6">
-                  {product.title.split(" ").splice(0, 2).join(" ")}
-                </h3>
-                <div className="d-flex justify-content-between">
-                  <p>{product.price}EGP</p>
-                  <p>
-                    <i className="fa fa-star rating-color"></i>
-                    {product.ratingsAverage}
-                  </p>
-                </div>
+              <div className="product px-2 py-3">
+                <Link to={`/product-details/` + product._id}>
+                  <img src={product.imageCover} className="w-100" alt="" />
+                  <p className="text-main">{product.category}</p>
+                  <h3 className="h6">
+                    {product.title.split(" ").splice(0, 2).join(" ")}
+                  </h3>
+                  <div className="d-flex justify-content-between">
+                    <p>{product.price}EGP</p>
+                    <p>
+                      <i className="fa fa-star rating-color"></i>
+                      {product.ratingsAverage}
+                    </p>
+                  </div>
+                </Link>
                 <button
                   onClick={() => generateCart(product._id)}
                   className="btn bg-main w-75 text-white"
@@ -76,7 +77,7 @@ export default function FeatureProducts() {
                 </button>
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </>

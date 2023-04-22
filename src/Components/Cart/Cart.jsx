@@ -4,11 +4,12 @@ import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { Helmet } from "react-helmet";
 import { Offline, Online } from "react-detect-offline";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState(null);
-  const [mainLoader, setMainLoader] = useState(true);
-  let { getCart, updateCart, removeItem } = useContext(CartContext);
+  const [mainLoader, setMainLoader] = useState(false);
+  let { getCart, updateCart, removeItem, clearCart } = useContext(CartContext);
 
   async function getCartDetails() {
     let { data } = await getCart();
@@ -21,7 +22,6 @@ export default function Cart() {
     setMainLoader(true);
     let { data } = await updateCart(id, count);
     setCartItems(data);
-    console.log(data);
     setMainLoader(false);
   }
 
@@ -29,7 +29,13 @@ export default function Cart() {
     setMainLoader(true);
     let { data } = await removeItem(id);
     setCartItems(data);
-    console.log(data);
+    setMainLoader(false);
+  }
+
+  async function clearCartHandler(id) {
+    setMainLoader(true);
+    let { data } = await clearCart(id);
+    setCartItems(data);
     setMainLoader(false);
   }
 
@@ -51,7 +57,7 @@ export default function Cart() {
           <i className="fa fa-spin fa-spinner fa-5x"></i>
         </div>
       )}
-      {cartItems && cartItems.data && (
+      {cartItems && cartItems.data ? (
         <div className="container py-5 my-5">
           <div className="bg-main-light p-5">
             <div className="d-flex justify-content-between align-items-center">
@@ -62,7 +68,7 @@ export default function Cart() {
                 </h4>
               </div>
               <div>
-                <button className="btn btn-danger">
+                <button onClick={clearCart} className="btn btn-danger">
                   <i className="fa-solid fa-x"></i> Clear
                 </button>
               </div>
@@ -81,7 +87,9 @@ export default function Cart() {
                 </div>
                 <div className="col-md-11 d-flex justify-content-between mb-2">
                   <div>
-                    <h4>{product.product.title}</h4>
+                    <Link to={"/product-details/" + product.product._id}>
+                      <h4>{product.product.title}</h4>
+                    </Link>
                     <p className="text-main">{product.price} EGP</p>
                     <button
                       onClick={() => removeItemHandler(product.product._id)}
@@ -120,7 +128,9 @@ export default function Cart() {
             ))}
           </div>
         </div>
-      )}
+      ): <div className="container py-5 vh-100"><h2>The Cart Is Empty </h2></div>
+
+       }
     </>
   );
 }

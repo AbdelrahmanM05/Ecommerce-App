@@ -5,15 +5,19 @@ import axios from "axios";
 
 export default function CategoriesSlider() {
   const [categories, setCategories] = useState([]);
+  const [mainLoader, setMainLoader] = useState(false);
+
 
   async function getCategories() {
     let { data } = await axios.get(
       `https://route-ecommerce.onrender.com/api/v1/categories`
     );
     setCategories(data.data);
+setMainLoader(false)
   }
 
   useEffect(() => {
+    setMainLoader(true)
     getCategories();
   }, []);
 
@@ -27,14 +31,21 @@ export default function CategoriesSlider() {
 
   return (
     <>
-      <Slider {...settings}>
-        {categories.map((category) => (
-          <div key={category._id} className="py-5">
-            <img src={category.image} height={300} width={"100%"} alt="" />
-            <h3 className="h6">{category.name}</h3>
-          </div>
-        ))}
-      </Slider>
+      {mainLoader && (
+        <div id="loader">
+          <i className="fa fa-spin fa-spinner fa-5x"></i>
+        </div>
+      )}
+      <div className="container">
+        <Slider {...settings}>
+          {categories.map((category) => (
+            <div key={category._id} className="py-5">
+              <img src={category.image} height={300} width={"100%"} alt="" />
+              <h3 className="h6">{category.name}</h3>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </>
   );
 }

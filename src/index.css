@@ -22,6 +22,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--main-color);
 }
 .rating-color
 {
@@ -75,4 +76,9 @@ a , a:hover{
 .bg-outline-main:hover{
     background-color: var(--main-color) !important;
     color: white;
+}
+
+.pay-imgs img,.galleries-img img{
+width: 50px;
+background-color: whitesmoke;
 }

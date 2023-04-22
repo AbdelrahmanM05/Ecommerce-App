@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { Toaster } from "react-hot-toast";
 import CartContextProvider from "./Context/CartContext";
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
 
 
 
@@ -49,6 +50,14 @@ function App() {
           element: (
             <ProtectedRoutes>
               <Products />
+            </ProtectedRoutes>
+          ),
+        },
+        {
+          path: "product-details/:id",
+          element: (
+            <ProtectedRoutes>
+              <ProductDetails />
             </ProtectedRoutes>
           ),
         },
