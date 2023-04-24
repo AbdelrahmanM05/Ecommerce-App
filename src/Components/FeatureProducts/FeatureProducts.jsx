@@ -28,7 +28,7 @@ export default function FeatureProducts() {
 
   async function getProducts() {
     let { data } = await axios.get(
-      `https://route-ecommerce.onrender.com/api/v1/products`
+      `https://route-ecommerce-app.vercel.app/api/v1/products`
     );
     setAllProducts(data.data);
     console.log(data.data);
@@ -49,17 +49,17 @@ export default function FeatureProducts() {
       )}
       <div className="container py-5">
         <div className="row">
-          {/* {allProducts.map((product) => (
-            <div className="col-sm-4 col-md-3 col-lg-2" key={product.id}>
-              <div className="product px-2 py-3">
+          {allProducts.map((product,index) => (
+            <div className="col-sm-4 col-md-3 col-lg-2" key={index}>
+              <div className="product px-2 py-3" >
                 <Link to={`/product-details/` + product._id}>
                   <img src={product.imageCover} className="w-100" alt="" />
-                  <p className="text-main">{product.category}</p>
+                  <p className="text-main">{product.category.name}</p>
                   <h3 className="h6">
                     {product.title.split(" ").splice(0, 2).join(" ")}
                   </h3>
                   <div className="d-flex justify-content-between">
-                    <p>{product.price}EGP</p>
+                    <p>{product.price} EGP</p>
                     <p>
                       <i className="fa fa-star rating-color"></i>
                       {product.ratingsAverage}
@@ -77,7 +77,7 @@ export default function FeatureProducts() {
                 </button>
               </div>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     </>

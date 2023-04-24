@@ -17,6 +17,7 @@ export default function ProductDetails() {
       `https://route-ecommerce.onrender.com/api/v1/products/${id}`
     );
     setProductDetails(data.data);
+    console.log(data.data);
     setMainLoader(false);
   }
 
@@ -28,7 +29,7 @@ export default function ProductDetails() {
         className: "border border-success border-2 box-shadow text-center  ",
       });
     } else {
-      toast.success(response.data.message, {
+      toast.error(response.data.message, {
         position: "bottom-right",
         className: "border border-success border-2 box-shadow text-center  ",
       });
@@ -39,6 +40,7 @@ export default function ProductDetails() {
     setMainLoader(true);
     getProductDetails();
   }, []);
+  
   var settings = {
     dots: true,
     infinite: true,
@@ -57,12 +59,11 @@ export default function ProductDetails() {
         <div className="row align-items-center">
           <div className="col-md-4">
             <Slider {...settings}>
-              {productDetails.images?.map((product, index) => (
+              {productDetails.images?.map((image, index) => (
                 <div key={index} className="py-5">
                   <img
-                    src={product.image}
-                    height={300}
-                    className="w-100"
+                    src={image}
+                    className="w-100 h-50"
                     alt=""
                   />
                 </div>

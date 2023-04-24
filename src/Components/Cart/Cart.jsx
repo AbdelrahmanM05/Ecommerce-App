@@ -68,7 +68,7 @@ export default function Cart() {
                 </h4>
               </div>
               <div>
-                <button onClick={clearCart} className="btn btn-danger">
+                <button onClick={clearCart} className="btn text-bg-danger rounded-pill">
                   <i className="fa-solid fa-x"></i> Clear
                 </button>
               </div>
