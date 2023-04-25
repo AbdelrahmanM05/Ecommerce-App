@@ -10,7 +10,7 @@ export default function ProductDetails() {
   let { id } = useParams();
   const [productDetails, setProductDetails] = useState({});
   const [mainLoader, setMainLoader] = useState(false);
-  let { createCart } = useContext(CartContext);
+  let { createCart, setNumOfCartItems } = useContext(CartContext);
 
   async function getProductDetails() {
     let { data } = await axios.get(
@@ -26,12 +26,11 @@ export default function ProductDetails() {
     if (response.data.status == "success") {
       toast.success(response.data.message, {
         position: "bottom-right",
-        className: "border border-success border-2 box-shadow text-center  ",
       });
+      setNumOfCartItems(response.data.numOfCartItems);
     } else {
       toast.error(response.data.message, {
         position: "bottom-right",
-        className: "border border-success border-2 box-shadow text-center  ",
       });
     }
   }

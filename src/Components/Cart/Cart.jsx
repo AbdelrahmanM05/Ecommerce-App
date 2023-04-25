@@ -126,6 +126,7 @@ export default function Cart() {
                 </div>
               </div>
             ))}
+          <Link to='/checkout' className="btn bg-main text-white">Procced To Payment</Link>
           </div>
         </div>
       ): <div className="container py-5 vh-100"><h2>The Cart Is Empty </h2></div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export let CartContext = createContext(0);
 
@@ -71,10 +71,47 @@ function clearCart() {
     .catch((err) => err);
 }
 
+function generateOnlinePayment(cartId,shippingAddress) {
+  return axios
+    .post(
+      `https://route-ecommerce-app.vercel.app/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`,
+      { shippingAddress },
+      {
+        headers,
+      }
+    )
+    .then((res) => res)
+    .catch((err) => err);
+}
+
 export default function CartContextProvider(props) {
+  const [numOfCartItems, setNumOfCartItems] = useState(0);
+  const [cartId, setCartId] = useState(null);
+
+  async function getIntialCart() {
+    let { data } = await getCart();
+    if (data.status == "success") {
+      setNumOfCartItems(data.numOfCartItems);
+      setCartId(data.data._id);
+    }
+  }
+
+  useEffect(() => {
+    getIntialCart();
+  }, []);
   return (
     <CartContext.Provider
-      value={{ createCart, getCart, updateCart, removeItem,clearCart }}
+      value={{
+        numOfCartItems,
+        setNumOfCartItems,
+        cartId,
+        createCart,
+        getCart,
+        updateCart,
+        removeItem,
+        clearCart,
+        generateOnlinePayment,
+      }}
     >
       {props.children}
     </CartContext.Provider>

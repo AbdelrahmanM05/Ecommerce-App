@@ -13,8 +13,8 @@ import jwtDecode from "jwt-decode";
 import { Toaster } from "react-hot-toast";
 import CartContextProvider from "./Context/CartContext";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
-
-
+import Chechout from "./Components/Chechout/Chechout";
+import Allorders from "./Components/Allorders/Allorders";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -70,6 +70,22 @@ function App() {
           ),
         },
         {
+          path: "checkout",
+          element: (
+            <ProtectedRoutes>
+              <Chechout />
+            </ProtectedRoutes>
+          ),
+        },
+        {
+          path: "allorders",
+          element: (
+            <ProtectedRoutes>
+              <Allorders userData={userData} />
+            </ProtectedRoutes>
+          ),
+        },
+        {
           path: "register",
           element: <Register />,
         },
@@ -88,7 +104,7 @@ function App() {
   return (
     <CartContextProvider>
       <RouterProvider router={routes}></RouterProvider>;
-      <Toaster/>
+      <Toaster />
     </CartContextProvider>
   );
 }

@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 export default function FeatureProducts() {
-  let { createCart } = useContext(CartContext);
+  let { createCart, setNumOfCartItems } = useContext(CartContext);
   const [allProducts, setAllProducts] = useState([]);
   const [mainLoader, setMainLoader] = useState(false);
 
@@ -16,12 +16,11 @@ export default function FeatureProducts() {
     if (response.data.status == "success") {
       toast.success(response.data.message, {
         position: "bottom-right",
-        className: "border border-success border-2 box-shadow text-center  ",
       });
+setNumOfCartItems(response.data.numOfCartItems);
     } else {
       toast.error(response.data.message, {
         position: "bottom-right",
-        className: "border border-success border-2 box-shadow text-center  ",
       });
     }
   }

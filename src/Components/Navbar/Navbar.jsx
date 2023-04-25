@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import logoimg from "../../imgs/freshcart-logo.svg";
+import { CartContext } from "../../Context/CartContext";
 
 export default function Navbar({ userData, logOut }) {
+
+let{numOfCartItems} =useContext(CartContext)
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
       <div className="container">
@@ -49,7 +53,7 @@ export default function Navbar({ userData, logOut }) {
             <li className="nav-item position-relative me-2">
               <Link to="cart" className="nav-link">
                 <i className="fa fa-shopping-cart"></i>
-                <span className="badge bg-main position-absolute top-0 start-50">0</span>
+                <span className="badge bg-main position-absolute top-0 start-50"> {numOfCartItems} </span>
               </Link>
             </li>
 
