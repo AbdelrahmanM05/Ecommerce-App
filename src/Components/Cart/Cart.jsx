@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Cart.module.css";
 import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { CartContext } from "../../Contexts/CartContext";
 import { Helmet } from "react-helmet";
 import { Offline, Online } from "react-detect-offline";
 import { Link } from "react-router-dom";
@@ -14,7 +14,6 @@ export default function Cart() {
   async function getCartDetails() {
     let { data } = await getCart();
     setCartItems(data);
-    console.log(data);
     setMainLoader(false);
   }
 
@@ -68,7 +67,10 @@ export default function Cart() {
                 </h4>
               </div>
               <div>
-                <button onClick={clearCart} className="btn text-bg-danger rounded-pill">
+                <button
+                  onClick={clearCart}
+                  className="btn text-bg-danger rounded-pill"
+                >
                   <i className="fa-solid fa-x"></i> Clear
                 </button>
               </div>
@@ -126,12 +128,19 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-          <Link to='/checkout' className="btn bg-main text-white">Procced To Payment</Link>
+            <Link to="/checkout" className="btn bg-main text-white">
+              Procced To Payment
+            </Link>
           </div>
         </div>
-      ): <div className="container py-5 vh-100"><h2>The Cart Is Empty </h2></div>
-
-       }
+      ) : (
+        <div className="container py-5 vh-100">
+          <h2>The Cart Is Empty </h2>
+          <p>
+            Add New Products From <Link to="/products" className="text-main">Here</Link>
+          </p>
+        </div>
+      )}
     </>
   );
 }

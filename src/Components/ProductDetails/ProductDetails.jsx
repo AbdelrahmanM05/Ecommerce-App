@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
 import { toast } from "react-hot-toast";
-import { CartContext } from "../../Context/CartContext";
+import { CartContext } from "../../Contexts/CartContext";
 
 export default function ProductDetails() {
   let { id } = useParams();
@@ -39,7 +39,7 @@ export default function ProductDetails() {
     setMainLoader(true);
     getProductDetails();
   }, []);
-  
+
   var settings = {
     dots: true,
     infinite: true,
@@ -60,11 +60,7 @@ export default function ProductDetails() {
             <Slider {...settings}>
               {productDetails.images?.map((image, index) => (
                 <div key={index} className="py-5">
-                  <img
-                    src={image}
-                    className="w-100 h-50"
-                    alt=""
-                  />
+                  <img src={image} className="w-100 h-50" alt="" />
                 </div>
               ))}
             </Slider>

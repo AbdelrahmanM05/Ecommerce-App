@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logoimg from "../../imgs/freshcart-logo.svg";
-import { CartContext } from "../../Context/CartContext";
+import { CartContext } from "../../Contexts/CartContext";
 
 export default function Navbar({ userData, logOut }) {
-
-let{numOfCartItems} =useContext(CartContext)
+  let { numOfCartItems } = useContext(CartContext);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
@@ -28,15 +27,20 @@ let{numOfCartItems} =useContext(CartContext)
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {userData && (
             <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to="" className="nav-link">
+              <li className="nav-item px-1">
+                <NavLink to="" className="nav-link">
                   Home
-                </Link>
+                </NavLink>
               </li>
-              <li className="nav-item">
-                <Link to="products" className="nav-link">
+              <li className="nav-item px-1">
+                <NavLink to="products" className="nav-link">
                   Products
-                </Link>
+                </NavLink>
+              </li>
+              <li className="nav-item px-1">
+                <NavLink to="categories" className="nav-link">
+                  Categories
+                </NavLink>
               </li>
             </ul>
           )}
@@ -53,7 +57,10 @@ let{numOfCartItems} =useContext(CartContext)
             <li className="nav-item position-relative me-2">
               <Link to="cart" className="nav-link">
                 <i className="fa fa-shopping-cart"></i>
-                <span className="badge bg-main position-absolute top-0 start-50"> {numOfCartItems} </span>
+                <span className="badge bg-main position-absolute top-0 start-50">
+                  {" "}
+                  {numOfCartItems}{" "}
+                </span>
               </Link>
             </li>
 

@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import styles from "./Chechout.module.css";
 import { useFormik } from "formik";
-import { CartContext } from "../../Context/CartContext";
+import { CartContext } from "../../Contexts/CartContext";
 
 export default function Chechout() {
   let { cartId, generateOnlinePayment } = useContext(CartContext);
 
-  async function handlePayment( values) {
-let {data} = await generateOnlinePayment(cartId, values)
-if(data.session){
-  window.location.href = data.session.url
-}
+  async function handlePayment(values) {
+    let { data } = await generateOnlinePayment(cartId, values);
+    if (data.session) {
+      window.location.href = data.session.url;
+    }
   }
 
   let formik = useFormik({
@@ -59,7 +59,12 @@ if(data.session){
             id="city"
             value={formik.values.city}
           />
-          <button onSubmit={formik.handleSubmit} className="btn btn-outline-info w-100">Pay</button>
+          <button
+            onSubmit={formik.handleSubmit}
+            className="btn btn-outline-info w-100"
+          >
+            Pay
+          </button>
         </form>
       </div>
     </>

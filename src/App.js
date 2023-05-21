@@ -11,7 +11,7 @@ import NotFound from "./Components/NotFound/NotFound";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { Toaster } from "react-hot-toast";
-import CartContextProvider from "./Context/CartContext";
+import CartContextProvider from "./Contexts/CartContext";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import Chechout from "./Components/Chechout/Chechout";
 import Allorders from "./Components/Allorders/Allorders";
