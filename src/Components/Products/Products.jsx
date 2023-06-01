@@ -13,13 +13,10 @@ export default function Products() {
 
   async function generateProducts() {
     setMainLoader(true);
-    let { data } = await  axios
-    .get(
-      `https://route-ecommerce.onrender.com/api/v1/products`
-
-    )
-    .then((res) => res)
-    .catch((err) => err);
+    let { data } = await axios
+      .get(`https://route-ecommerce.onrender.com/api/v1/products`)
+      .then((res) => res)
+      .catch((err) => err);
 
     setAllProducts(data.data);
     setMainLoader(false);

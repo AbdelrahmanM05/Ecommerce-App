@@ -15,9 +15,12 @@ import CartContextProvider from "./Contexts/CartContext";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import Chechout from "./Components/Chechout/Chechout";
 import Allorders from "./Components/Allorders/Allorders";
+import Favourites from "./Components/Favourites/Favourites";
+import Categories from "./Components/Categories/Categories";
+import CategoriesContextProvider from "./Contexts/CategoriesContext";
 
 function App() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState({ });
 
   useEffect(() => {
     if (localStorage.getItem("userToken")) {
@@ -54,6 +57,14 @@ function App() {
           ),
         },
         {
+          path: "categories",
+          element: (
+            <ProtectedRoutes>
+              <Categories />
+            </ProtectedRoutes>
+          ),
+        },
+        {
           path: "product-details/:id",
           element: (
             <ProtectedRoutes>
@@ -66,6 +77,14 @@ function App() {
           element: (
             <ProtectedRoutes>
               <Cart />
+            </ProtectedRoutes>
+          ),
+        },
+        {
+          path: "favourit",
+          element: (
+            <ProtectedRoutes>
+              <Favourites />
             </ProtectedRoutes>
           ),
         },
@@ -102,10 +121,12 @@ function App() {
   ]);
 
   return (
+    <CategoriesContextProvider>
     <CartContextProvider>
       <RouterProvider router={routes}></RouterProvider>;
       <Toaster />
     </CartContextProvider>
+    </CategoriesContextProvider>
   );
 }
 

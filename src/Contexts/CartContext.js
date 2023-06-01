@@ -71,10 +71,10 @@ function clearCart() {
     .catch((err) => err);
 }
 
-function generateOnlinePayment(cartId,shippingAddress) {
+function generateOnlinePayment(cartId, shippingAddress) {
   return axios
     .post(
-      `https://route-ecommerce-app.vercel.app/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`,
+      `https://route-ecommerce-app.vercel.app/api/v1/orders/checkout-session/${cartId}?url=https://fresh-shopping.netlify.app`,
       { shippingAddress },
       {
         headers,

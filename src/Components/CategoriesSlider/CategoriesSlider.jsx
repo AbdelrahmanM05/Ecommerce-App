@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import styles from "./CategoriesSlider.module.css";
 import axios from "axios";
+import { CategoriesContext } from "../../Contexts/CategoriesContext";
 
 export default function CategoriesSlider() {
   const [categories, setCategories] = useState([]);
   const [mainLoader, setMainLoader] = useState(false);
+  let { getCategories } = useContext(CategoriesContext);
 
-
-  async function getCategories() {
-    let { data } = await axios.get(
-      `https://route-ecommerce.onrender.com/api/v1/categories`
-    );
+  async function handleGetCategories() {
+    let { data } = await getCategories();
     setCategories(data.data);
-setMainLoader(false)
+    setMainLoader(false);
   }
 
   useEffect(() => {
-    setMainLoader(true)
-    getCategories();
+    setMainLoader(true);
+    handleGetCategories();
   }, []);
 
   var settings = {
