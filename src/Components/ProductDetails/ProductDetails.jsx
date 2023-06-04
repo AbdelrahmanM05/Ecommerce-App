@@ -57,7 +57,7 @@ export default function ProductDetails() {
       <div className="container py-5">
         <div className="row align-items-center">
           <div className="col-md-4">
-            <Slider {...settings}>
+            <Slider {...settings} className="mb-5">
               {productDetails.images?.map((image, index) => (
                 <div key={index} className="py-5">
                   <img src={image} className="w-100 h-50" alt="" />

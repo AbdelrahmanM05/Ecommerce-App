@@ -12,7 +12,6 @@ export default function Categories() {
   async function handleGetCategories() {
     let { data } = await getCategories();
     setCategories(data.data);
-    console.log(data.data);
     setMainLoader(false);
   }
 
@@ -25,7 +24,7 @@ export default function Categories() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Products</title>
+        <title>Categories</title>
       </Helmet>
       <>
         {mainLoader && (
@@ -36,16 +35,16 @@ export default function Categories() {
         <div className="container py-5">
           <div className="row">
             {categories.map((category) => (
-              <div key={category._id} className="col-md-4">
+              <div key={category._id} className="col-md-3">
                 <Link>
                   <img
                     src={category.image}
                     className="w-100"
-                    height={500}
+                    height={400}
                     alt=""
                   />
-                  <h5 className="text-main">{category.name}</h5>
-                </Link>{" "}
+                  <h5 className="text-main text-center">{category.name}</h5>
+                </Link>
               </div>
             ))}
           </div>

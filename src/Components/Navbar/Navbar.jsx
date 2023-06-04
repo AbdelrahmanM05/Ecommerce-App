@@ -42,6 +42,11 @@ export default function Navbar({ userData, logOut }) {
                   Categories
                 </NavLink>
               </li>
+              <li className="nav-item px-1">
+                <NavLink to="brands" className="nav-link">
+                  Brands
+                </NavLink>
+              </li>
             </ul>
           )}
           <ul className=" navbar-nav justify-content-between align-items-center text-white ms-auto">
@@ -58,8 +63,7 @@ export default function Navbar({ userData, logOut }) {
               <Link to="cart" className="nav-link">
                 <i className="fa fa-shopping-cart"></i>
                 <span className="badge bg-main position-absolute top-0 start-50">
-                  {" "}
-                  {numOfCartItems}{" "}
+                  {numOfCartItems}
                 </span>
               </Link>
             </li>

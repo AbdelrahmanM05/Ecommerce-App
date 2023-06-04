@@ -18,6 +18,7 @@ import Allorders from "./Components/Allorders/Allorders";
 import Favourites from "./Components/Favourites/Favourites";
 import Categories from "./Components/Categories/Categories";
 import CategoriesContextProvider from "./Contexts/CategoriesContext";
+import Brands from "./Components/Brands/Brands";
 
 function App() {
   const [userData, setUserData] = useState({ });
@@ -65,6 +66,14 @@ function App() {
           ),
         },
         {
+          path: "brands",
+          element: (
+            <ProtectedRoutes>
+              <Brands />
+            </ProtectedRoutes>
+          ),
+        },
+        {
           path: "product-details/:id",
           element: (
             <ProtectedRoutes>
@@ -81,7 +90,7 @@ function App() {
           ),
         },
         {
-          path: "favourit",
+          path: "favourites",
           element: (
             <ProtectedRoutes>
               <Favourites />

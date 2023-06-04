@@ -23,8 +23,8 @@ export default function Footer() {
           />
           <button className="btn bg-main text-white">Add The app</button>
         </div>
-        <div className="d-flex justify-content-between">
-          <div className="d-flex pt-3 border-top border-1">
+        <div className="d-flex pt-3 border-top border-1">
+          <div className="d-flex ">
             <p className="me-1">Payment Partners</p>
             <div className="pay-imgs">
               <img src={americanImg} alt="" />
@@ -33,7 +33,7 @@ export default function Footer() {
               <img src={paypalImg} alt="" />
             </div>
           </div>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center ms-auto">
             <p className="mb-0 me-2">Get deliveries with Freshcart</p>
             <div className="galleries-img">
               <img src={playstoreImg} alt="" />

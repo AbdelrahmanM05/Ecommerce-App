@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styles from "./CategoriesSlider.module.css";
 import axios from "axios";
 import { CategoriesContext } from "../../Contexts/CategoriesContext";
+import { Link } from "react-router-dom";
 
 export default function CategoriesSlider() {
   const [categories, setCategories] = useState([]);
@@ -39,8 +40,10 @@ export default function CategoriesSlider() {
         <Slider {...settings}>
           {categories.map((category) => (
             <div key={category._id} className="py-5">
-              <img src={category.image} height={300} width={"100%"} alt="" />
-              <h3 className="h6">{category.name}</h3>
+              <Link>
+                <img src={category.image} height={400} className='w-100' alt="" />
+                <h3 className="h6">{category.name}</h3>
+              </Link>
             </div>
           ))}
         </Slider>
