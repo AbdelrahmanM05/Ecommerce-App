@@ -8,7 +8,7 @@ let headers = { token: localStorage.getItem("userToken") };
 function createCart(id) {
   return axios
     .post(
-      `https://route-ecommerce.onrender.com/api/v1/cart`,
+      `https://ecommerce.routemisr.com/api/v1/cart`,
       { productId: id },
       {
         headers,
@@ -21,7 +21,7 @@ function createCart(id) {
 function getCart() {
   return axios
     .get(
-      `https://route-ecommerce.onrender.com/api/v1/cart`,
+      `https://ecommerce.routemisr.com/api/v1/cart`,
 
       {
         headers,
@@ -34,7 +34,7 @@ function getCart() {
 function updateCart(id, count) {
   return axios
     .put(
-      `https://route-ecommerce.onrender.com/api/v1/cart/${id}`,
+      `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
       { count },
 
       {
@@ -48,7 +48,7 @@ function updateCart(id, count) {
 function removeItem(id) {
   return axios
     .delete(
-      `https://route-ecommerce.onrender.com/api/v1/cart/${id}`,
+      `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
 
       {
         headers,
@@ -61,7 +61,7 @@ function removeItem(id) {
 function clearCart() {
   return axios
     .delete(
-      `https://route-ecommerce.onrender.com/api/v1/cart`,
+      `https://ecommerce.routemisr.com/api/v1/cart`,
 
       {
         headers,

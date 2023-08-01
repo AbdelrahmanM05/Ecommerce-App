@@ -14,7 +14,7 @@ export default function Products() {
   async function generateProducts() {
     setMainLoader(true);
     let { data } = await axios
-      .get(`https://route-ecommerce.onrender.com/api/v1/products`)
+      .get(`https://ecommerce.routemisr.com/api/v1/products`)
       .then((res) => res)
       .catch((err) => err);
 

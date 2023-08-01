@@ -9,7 +9,7 @@ import applestoreImg from "../../imgs/itunes-app.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-main-light m-5 py-5">
+    <footer className="bg-main-light mx-3 py-5">
       <div className="container ">
         <h3>Get The FreshCart app</h3>
         <p className="text-secondary">

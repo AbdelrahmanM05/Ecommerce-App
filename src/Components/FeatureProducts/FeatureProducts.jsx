@@ -27,7 +27,7 @@ export default function FeatureProducts() {
 
   async function getProducts() {
     let { data } = await axios.get(
-      `https://route-ecommerce-app.vercel.app/api/v1/products`
+      `https://ecommerce.routemisr.com/api/v1/products`
     );
     setAllProducts(data.data);
     setMainLoader(false);

@@ -27,22 +27,22 @@ export default function Navbar({ userData, logOut }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {userData && (
             <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item px-1">
+              <li className="nav-item px-1 text-uppercase">
                 <NavLink to="" className="nav-link">
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item px-1">
+              <li className="nav-item px-1 text-uppercase">
                 <NavLink to="products" className="nav-link">
                   Products
                 </NavLink>
               </li>
-              <li className="nav-item px-1">
+              <li className="nav-item px-1 text-uppercase">
                 <NavLink to="categories" className="nav-link">
                   Categories
                 </NavLink>
               </li>
-              <li className="nav-item px-1">
+              <li className="nav-item px-1 text-uppercase">
                 <NavLink to="brands" className="nav-link">
                   Brands
                 </NavLink>
