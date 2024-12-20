@@ -5,7 +5,7 @@ export let CategoriesContext = createContext(0);
 
 function getCategories() {
   return axios
-    .get(`https://route-ecommerce.onrender.com/api/v1/categories`)
+    .get(`https://ecommerce.routemisr.com/api/v1/categories`)
     .then((res) => res)
     .catch((err) => err);
 }
